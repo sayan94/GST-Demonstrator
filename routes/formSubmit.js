@@ -14,7 +14,7 @@ module.exports = (app) =>{
 
       try{
        await item.save();
-       res.send(item);
+       res.status(200).send(item);
       }catch(err){
        res.status(422).send(err);
       }
@@ -23,5 +23,11 @@ module.exports = (app) =>{
 
   app.get('/api/getItems', async(req, res)=>{
 
+    try {
+        const items = await Item.find({});
+        res.status(200).send(items);
+    }catch(err){
+      res.status(422).send(err);
+    }
   })
 };
