@@ -8,7 +8,7 @@ mongoose.connect('mongodb://sayan94:password@ds231229.mlab.com:31229/gst-data');
 
 const app = express();
 
-app.use(bodyParser.urlencoded({ extended: true }));
+app.use(bodyParser.json());
 
 require('./routes/formSubmit')(app);
 

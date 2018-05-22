@@ -4,12 +4,15 @@ const axios = require('axios');
 
 module.exports = (app) =>{
   app.post('/api/formSubmit', async(req, res)=>{
+     // console.log(JSON.stringify(req,undefined,2));
+      const {name, gst, price} = req.body;
+      // const {gst} = req.body;
+      // const {price} = req.body;
 
-     const { name, price, gst, createdAt} = req.body;
-     const expression = `${price}(100%2B${gst})%2F100`;
+      const expression = `${price}(100%2B${gst})%2F100`;
 
       try{
-          let totalPrice = await axios.get(`http://api.mathjs.org/v4/?expr=${expression}`);
+          totalPrice = await axios.get(`http://api.mathjs.org/v4/?expr=${expression}`);
           totalPrice = totalPrice.data;
           const item = new Item({
               name,
