@@ -1,10 +1,12 @@
 const express = require('express');
 const mongoose = require('mongoose');
 const bodyParser = require('body-parser');
+const keys = require('./config/keys')
+
 require('./models/Item');
 
 mongoose.Promise = global.Promise;
-mongoose.connect('mongodb://sayan94:password@ds231229.mlab.com:31229/gst-data');
+mongoose.connect(keys.mongoURI);
 
 const app = express();
 
@@ -13,6 +15,4 @@ app.use(bodyParser.json());
 require('./routes/formSubmit')(app);
 
 const PORT = process.env.PORT || 5000;
-app.listen(PORT, ()=>{
-    console.log('app running in port 5000');
-});
+app.listen(PORT);
