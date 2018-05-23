@@ -3,16 +3,14 @@ import React from 'react';
 import {RadialChart} from 'react-vis';
 
 export default class SimpleRadialChart extends React.Component {
-    constructor(props){
-        super(props)
-    }
+
     render() {
         return (
             <RadialChart
                 colorType={'literal'}
                 colorDomain={[0, 100]}
                 colorRange={[0, 10]}
-                margin={{top: 100, bottom: 20}}
+                margin={{top: 100, bottom: 100}}
                 getLabel={d => d.name}
                 data={[
                     {angle: this.props.angles.gstFive, color: '#89DAC1', name: '5%', opacity: 0.2},
