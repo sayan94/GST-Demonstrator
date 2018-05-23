@@ -17,8 +17,9 @@ module.exports = (app) =>{
               totalPrice,
               createdAt:Date.now()
           });
+
           await item.save();
-          res.status(200).send(item);
+         res.status(200).send(item);
       }catch(err){
        res.status(422).send(err);
       }
